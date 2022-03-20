@@ -11,11 +11,14 @@ namespace globals
 	inline std::uintptr_t engineAddress = 0;
 
 	inline bool glow = false;
-	inline float glowColor[] = { 1.f, 0.f, 0.f, 1.f };
+	inline float glowColor[] = { 0.f, 1.f, 1.f, 1.f };
 	inline bool chams = false;
+	inline float chamsColor[] = { 0.f, 1.f, 1.f };
 	inline bool radar = false;
 	inline bool bhop = false;
 	inline bool aimbot = false;
+	static const char* items[]{ "8", "6", "4"};
+	inline int selection = 0;
 	inline bool trigger = false;
 
 }
@@ -24,13 +27,13 @@ namespace globals
 namespace offsets
 {
 	//client
-	constexpr ::std::ptrdiff_t dwLocalPlayer = 0xDB35EC;
-	constexpr ::std::ptrdiff_t dwGlowObjectManager = 0x5316E98;
-	constexpr ::std::ptrdiff_t dwEntityList = 0x4DCEB7C;
-	constexpr ::std::ptrdiff_t dwForceJump = 0x52789F8;
+	constexpr ::std::ptrdiff_t dwLocalPlayer = 0xDB35DC;
+	constexpr ::std::ptrdiff_t dwGlowObjectManager = 0x5317308;
+	constexpr ::std::ptrdiff_t dwEntityList = 0x4DCEEAC;
+	constexpr ::std::ptrdiff_t dwForceJump = 0x5278DDC;
 
 	//eng
-	constexpr ::std::ptrdiff_t dwClientState = 0x58BFC4;
+	constexpr ::std::ptrdiff_t dwClientState = 0x58CFC4;
 	constexpr ::std::ptrdiff_t dwClientState_ViewAngles = 0x4D90;
 	constexpr ::std::ptrdiff_t dwClientState_GetLocalPlayer = 0x180;
 
@@ -200,7 +203,7 @@ namespace offsets
 	constexpr ::std::ptrdiff_t m_pStudioHdr = 0x2950;
 	constexpr ::std::ptrdiff_t m_pitchClassPtr = 0x5203B90;
 	constexpr ::std::ptrdiff_t m_yawClassPtr = 0xDB8F58;
-	constexpr ::std::ptrdiff_t model_ambient_min = 0x58F03C;
+	constexpr ::std::ptrdiff_t model_ambient_min = 0x59003C;
 	constexpr ::std::ptrdiff_t set_abs_angles = 0x1E51E0;
 	constexpr ::std::ptrdiff_t set_abs_origin = 0x1E5020;
 }

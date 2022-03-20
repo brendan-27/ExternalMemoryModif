@@ -7,20 +7,6 @@
 
 #include <thread>
 
-//junk
-int one;
-int tw;
-int wdadwad;
-
-int asd;
-
-int awdawdawd;
-int awdaw4awd;
-
-int wadwasdaw;
-int wdaw4awdaw;
-
-int aw3awcw1;
 
 constexpr Vector3 CalculateAngle(
 	const Vector3& localPosition,
@@ -30,6 +16,7 @@ constexpr Vector3 CalculateAngle(
 	return ((enemyPosition - localPosition).ToAngle() - viewAngles);
 }
 
+int bone;
 
 void hacks::MovementThread(const Memory& mem) noexcept
 {
@@ -116,9 +103,13 @@ void hacks::VisualsThread(const Memory& mem) noexcept
 				mem.Write(glowManager + (glowIndex * 0x38) + 0x29, false);
 
 			}
-
+			
 			if (globals::radar)
 				mem.Write(player + offsets::m_bSpotted, true);
+
+			float ra = globals::chamsColor[0];
+			float ga = globals::chamsColor[1];
+			float ba = globals::chamsColor[2];
 
 
 			struct Color
@@ -128,7 +119,7 @@ void hacks::VisualsThread(const Memory& mem) noexcept
 			};
 
 			constexpr const auto teamColor = Color{ 0, 0, 255 };
-			constexpr const auto enemyColor = Color{ 22, 162, 220 };
+			constexpr const auto enemyColor = Color{ 150, 162, 255 };
 
 			if (globals::chams)
 			{
@@ -192,10 +183,26 @@ void hacks::VisualsThread(const Memory& mem) noexcept
 
 						
 						// 8 = head bone 
+
+						
+
+						if (globals::selection == 0)
+						{
+							bone = 8;
+						}
+						else if (globals::selection == 1)
+						{
+							bone = 6;
+						}
+						else if (globals:: selection == 2) {
+
+							bone = 4;
+						}
+
 						const auto playerHeadPosition = Vector3{
-							mem.Read<float>(boneMatrix + 0x30 * 8 + 0x0C),
-							mem.Read<float>(boneMatrix + 0x30 * 8 + 0x1C),
-							mem.Read<float>(boneMatrix + 0x30 * 8 + 0x2C)
+							mem.Read<float>(boneMatrix + 0x30 * bone + 0x0C),
+							mem.Read<float>(boneMatrix + 0x30 * bone + 0x1C),
+							mem.Read<float>(boneMatrix + 0x30 * bone + 0x2C)
 						};
 
 						const auto angle = CalculateAngle(
@@ -215,9 +222,11 @@ void hacks::VisualsThread(const Memory& mem) noexcept
 				}
 
 				if (!bestAngle.IsZero())
-					mem.Write<Vector3>(clientState + offsets::dwClientState_ViewAngles, viewAngles + bestAngle / 13.f);
+					mem.Write<Vector3>(clientState + offsets::dwClientState_ViewAngles, viewAngles + bestAngle / 14.f);
 
 			}
+
+			//
 
 
 

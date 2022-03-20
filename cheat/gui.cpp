@@ -186,7 +186,7 @@ void gui::CreateImGui() noexcept
 
 	io.IniFilename = NULL;
 
-	ImGui::StyleColorsDark();
+	ImGui::StyleColorsLight();
 
 	ImGui_ImplWin32_Init(window);
 	ImGui_ImplDX9_Init(device);
@@ -244,15 +244,14 @@ void gui::EndRender() noexcept
 		ResetDevice();
 }
 
+
+
 void gui::Render() noexcept
 {
 	ImGui::SetNextWindowPos({ 0, 0 });
-	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
+	ImGui::SetNextWindowSize({ HEIGHT, WIDTH });
 
-	
-	
-	
-	
+
 	ImGui::Begin(
 		"directbase", &isRunning
 	);
@@ -260,15 +259,25 @@ void gui::Render() noexcept
 	ImGui::Checkbox("glow", &globals::glow);
 	ImGui::ColorEdit4("color", globals::glowColor);
 	ImGui::Checkbox("chams ", &globals::chams);
+	//ImGui::ColorEdit3("color", globals::chamsColor);
 
 	
 	
 	
 	ImGui::Checkbox("bhop", &globals::bhop);
-	ImGui::Checkbox("aimbot head only", &globals::aimbot);
+	ImGui::Checkbox("aimbot head only // bone id 8 ", &globals::aimbot);
+	ImGui::ListBox("BoneId", &globals::selection, globals::items , 3);
+
+	
+	//ImGui::GetWindowDrawList()->AddText(ImGui::GetFont(), ImGui::GetFontSize(), ImVec2(100.f, 100.f), ImColor(150, 255, 255, 255), "Hello World", 0, 0.0f, 0);
 
 
+	//ImGui::SetCursorPos({ 50,50 });
 
+	//ImGui::TextColored(ImColor(255, 255, 255, 255), "Example");
+
+
+	
 	ImGui::Checkbox("radar", &globals::radar);
 	//ImGui::Checkbox("trigfig", &globals::trigger);
 
