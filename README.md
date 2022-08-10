@@ -1,4 +1,4 @@
-# ExtCS
+# ExternalCSGO
 
 
 external imgui csgo cheat for learning purposes
