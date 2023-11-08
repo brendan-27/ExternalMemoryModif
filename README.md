@@ -1,5 +1,4 @@
-# ExternalCSGO
+# External Memory Modification
 
-
-external imgui csgo cheat 
+external program to modify the memory of CSGO
 for education purposes only
